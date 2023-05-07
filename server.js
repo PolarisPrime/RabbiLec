@@ -17,6 +17,10 @@ MongoClient.connect(dbConnectionString)
     collection = db.collection('lectures')
 })
 
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+
 // DB_STRING
 //  Port = 8000
 app.listen(process.env.PORT || PORT, () => {
