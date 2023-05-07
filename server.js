@@ -17,9 +17,13 @@ MongoClient.connect(dbConnectionString)
     collection = db.collection('lectures')
 })
 
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
+// Middleware, should before any CRUD operations
+app.set('view engine', 'ejs') // ejs helps with templating
+app.use(express.static('public')) // set's up folder to hold CSS and JS files
+app.use(express.urlencoded({extended:true})) //helps to parse URLs
+app.use(express.json())
+app.use(cors())
+
 
 // DB_STRING
 //  Port = 8000
